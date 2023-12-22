@@ -1,0 +1,107 @@
+*{
+    margin: 0;padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #161f2e;
+}
+.container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    /* background: cyan; */
+    border: cyan 1px solid;
+    box-shadow: 0 0 10px cyan;
+    padding: 40px 60px;
+}
+h2{
+    font-size: 3em;
+    color: Cyan;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+.reset{
+    padding: 15px 20px;
+    color: #055f53;
+    background: #fff;
+    border: none;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 20px;
+}
+.reset:focus{
+    color: #fff;
+    background: #055f53;
+}
+.game{
+    width: 350px;
+    height: 330px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+.item{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    font-size: 4em;
+    transition: 0.25s;
+    transform: rotateY(180deg);
+}
+.item.openBox{
+    transform: rotateY(0deg);
+}
+.item::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* background: #099784; */
+    background: #161f2e;
+    box-shadow:  0 0 4px cyan;
+    transition: 0.25s;
+    transform: rotateY(0deg);
+    /* opacity: 0.85; */
+    backface-visibility: hidden;
+}
+.openBox:after,.boxMatch:after{
+    transform: rotateY(180deg);
+}
+
+@media screen and (max-width: 320px) {
+    h2{
+        font-size: 2rem;
+        color: cyan;
+    }
+    .game{
+        height: 233px;
+        width: 233px;
+    }
+    .item{
+        width: 50px;
+        height: 50px;
+        font-size: 2em;
+    }
+    .container{
+        padding:40px 20px;
+    }
+    .reset{
+        font-size: 1.2em;
+    }
+}
